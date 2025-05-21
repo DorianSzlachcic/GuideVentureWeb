@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "guideventure"
+version = "0.1.0"
+description = "GuideVenture web application"
+requires-python = ">=3.10"
+authors = [
+    {name = "Dorian Szlachcic", email = "dorianszlachcic@gmail.com"},
+]
+dependencies = [
+    "asgiref==3.8.1",
+    "Django==5.2.1",
+    "sqlparse==0.5.3",
+    "typing_extensions==4.13.2",
+    "djangorestframework==3.16.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "flake8>=6.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
