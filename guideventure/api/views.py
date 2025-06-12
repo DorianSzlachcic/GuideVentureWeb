@@ -2,8 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
 
 from .models import Adventure, Step
-from .serializers import (AdventureDetailSerializer, AdventureListSerializer,
-                          StepSerializer, UserSerializer)
+from .serializers import AdventureDetailSerializer, AdventureListSerializer, PolymorphicStepSerializer, UserSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -19,8 +18,8 @@ class StepViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows steps to be viewed or edited.
     """
-    queryset = Step.objects.all()
-    serializer_class = StepSerializer
+    queryset = Step.objects.select_subclasses()
+    serializer_class = PolymorphicStepSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 

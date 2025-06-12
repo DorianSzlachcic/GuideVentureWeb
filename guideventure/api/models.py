@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from model_utils.managers import InheritanceManager
 
 
 class Adventure(models.Model):
@@ -29,6 +30,8 @@ class Step(models.Model):
     order = models.PositiveIntegerField()
     longitude = models.FloatField()
     latitude = models.FloatField()
+
+    objects = InheritanceManager()  # Allows for polymorphic behavior
 
     class Meta:
         ordering = ['order']
